@@ -1,0 +1,3 @@
+
+class Nieghborhood(object):
+    houses[][];
