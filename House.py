@@ -3,7 +3,15 @@ from random import randint
 
 class House(object):
     def __init__(self):
-        self.monsters = House.generateMonsters()
+        self._monsters = House.generateMonsters()
+
+    def takeDamage(self, amount, weapon):
+        for mon in _monsters:
+            mon.takeDamage(amount, weapon)
+
+    def dealDamage(self, player):
+        for Mon in _monsters:
+            mon.dealDamage(player)
 
     def generateMonsters():
         monsterList = []

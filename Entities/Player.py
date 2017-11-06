@@ -1,4 +1,6 @@
 from .Entity import Entity
 
 class Player(Entity):
-    pass
+
+    def dealDamage(self, house, weapon):
+        house.takeDamage(self.attack)
