@@ -9,13 +9,20 @@ class Weapon:
     def use(self, amount):
         modAmount = amount * randrange(self._attackModifierMin, self._attackModifierMax)
 
-        durability = durability - 1
+        self._durability = self._durability - 1
+        return modAmount
 
 
 class HersheyKisses(Weapon):
     """A basic weapon with unlimited uses and no attack modifier."""
     def __init__(self):
         super(HersheyKisses, self).__init__(1, 1, 1)
+
+    def use(self, amount):
+        modAmount = amount
+
+        self._durability = self._durability - 1
+        return modAmount
 
 def generateRandomWeaponList(amount):
     weapons = []
