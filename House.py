@@ -6,7 +6,7 @@ class House(object):
         self._monsters = House.generateMonsters()
 
     def takeDamage(self, amount, weapon):
-        for mon in _monsters:
+        for mon in self._monsters:
             mon.takeDamage(amount, weapon)
 
     def dealDamage(self, player):
