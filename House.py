@@ -1,13 +1,19 @@
 from Entities import Monsters
 from random import randint
+from Observers.Observer import Observer
 
-class House(object):
+class House(Observer):
     def __init__(self):
         self._monsters = House.generateMonsters()
 
+    def update(self):
+        print("house was updated")
+
     def takeDamage(self, amount, weapon):
-        for mon in self._monsters:
+        for i, mon in enumerate(self._monsters):
             mon.takeDamage(amount, weapon)
+            if mon.isDead:
+                self._monsters[i] = Monsters.Person()
 
     def dealDamage(self, player):
         for Mon in _monsters:
