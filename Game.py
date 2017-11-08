@@ -1,8 +1,9 @@
-from Player import Player
-from Nieghborhood import Nieghborhood
+from Entities.Player import Player
+from Neighborhood import Neighborhood
 
 class Game(object):
+
     def __init__(self):
-        player = Player()
-        nieghborhood = Nieghborhood()
-        
+        self.player = Player()
+        self.playerLoc = (0, 0)
+        self.neighborhood = Neighborhood()
