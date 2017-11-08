@@ -6,6 +6,12 @@ class House(Observer):
     def __init__(self):
         self._monsters = self.generateMonsters()
 
+    def __str__(self):
+        s = "House Contains: \n"
+        for mon in self._monsters:
+            s.append("{} \n".format(mon))
+        return s
+
     def update(self, info):
         if info in self._monsters:
             self._monsters[self._monsters.index(info)] = Monsters.Person()
@@ -14,8 +20,9 @@ class House(Observer):
         for i, mon in enumerate(self._monsters):
             mon.takeDamage(amount, weapon)
 
+
     def dealDamage(self, player):
-        for Mon in _monsters:
+        for mon in self._monsters:
             mon.dealDamage(player)
 
     def generateMonsters(self):
