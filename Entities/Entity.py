@@ -21,6 +21,7 @@ class Entity(Observable):
         else:
             print("{} is defeated and transforms back into a human!".format(self))
             self.update()
+            self.remove_all_observers()
 
     def dealDamage(self, target, modifier=1):
         target.takeDamage(self._attack * modifier)
