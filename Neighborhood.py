@@ -10,8 +10,8 @@ class Neighborhood(object):
         # have the monster deal damage back
         self._houses[x][y].dealDamage(source)
 
-    def inBounds(self, x, y):
-        if x in range(0, len(self._houses)) && y in range(0, len(self._houses[0])):
+    def inBounds(self, loc):
+        if loc[0] in range(0, len(self._houses)) && loc[1] in range(0, len(self._houses[0])):
             return True
         else:
             return False
