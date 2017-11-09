@@ -1,6 +1,8 @@
 from .Entity import Entity
 from random import randint
 
+# TODO damage resistance
+
 class Person(Entity):
 
     # constructor that calls Entity's constructor with 100 health and -1
@@ -17,46 +19,34 @@ class Person(Entity):
 
 class Zombie(Entity):
     def __init__(self):
-        super(Zombie, self).__init__(health=randint(50, 100), attack=1)
+        super(Zombie, self).__init__(health=randint(50, 100), attack=randint(0, 10))
 
     def __str__(self):
         return "Zombie"
 
-    def dealDamage(self, target):
-        super(Zombie, self).dealDamage(target, randint(0, 10))
-
 class Vampire(Entity):
     """A Vampire Monster that is not harmed by Chocolate bars or SourStraws"""
     def __init__(self):
-        super(Vampire, self).__init__(health=randint(100, 200), attack=1)
+        super(Vampire, self).__init__(health=randint(100, 200), attack=randint(10, 20))
 
     def __str__(self):
         return "Vampire"
 
-    def dealDamage(self, target):
-        super(Vampire, self).dealDamage(target, randint(10, 20))
-
 class Ghoul(Entity):
     """A Ghoul Monster that takes 5X the damage from NerdBombs"""
     def __init__(self):
-        super(Ghoul, self).__init__(health=randint(40, 80), attack=1)
+        super(Ghoul, self).__init__(health=randint(40, 80), attack=randint(15, 30))
 
     def __str__(self):
         return "Ghoul"
 
-    def dealDamage(self, target):
-        super(Ghoul, self).dealDamage(target, randint(15, 30))
-
 class Werewolf(Entity):
     """A Ghoul Monster that takes 5X the damage from NerdBombs"""
     def __init__(self):
-        super(Werewolf, self).__init__(health=200, attack=1)
+        super(Werewolf, self).__init__(health=200, attack=randint(0, 40))
 
     def __str__(self):
         return "Werewolf"
-
-    def dealDamage(self, target):
-        super(Werewolf, self).dealDamage(target, randint(0, 40))
 
 def generateRandomMonster():
     monsterInt = randint(0, 4)
