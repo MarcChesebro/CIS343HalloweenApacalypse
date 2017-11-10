@@ -12,19 +12,23 @@ class House(Observer):
             s.append("{} \n".format(mon))
         return s
 
-    def update(self, info):
+    def getMonsterlist(self):
+        return self._monsters
+
+    def receiveUpdate(self, info):
         if info in self._monsters:
             self._monsters[self._monsters.index(info)] = Monsters.Person()
 
-    def takeDamage(self, amount, weapon):
-        for i, mon in enumerate(self._monsters):
-            mon.takeDamage(amount, weapon)
-
+    def attackAll(self, player, weapon):
+        for mon in self._monsters:
+            player.dealDamage(mon, weapon)
 
     def dealDamage(self, player):
         for mon in self._monsters:
-            mon.dealDamage(player)
+            if not player.isDead():
+                mon.dealDamage(player)
 
+    # TODO add generateMonstersList
     def generateMonsters(self):
         monsterList = []
         for i in range(0, randint(0, 10)):
