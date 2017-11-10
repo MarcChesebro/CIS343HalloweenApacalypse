@@ -6,8 +6,8 @@ class Entity(Observable):
         self._attack = attack
         super(Entity, self).__init__()
 
-    def update(self):
-        super(Entity, self).update(info=self)
+    def sendUpdate(self):
+        super(Entity, self).sendUpdate(info=self)
 
     def isDead(self):
         if self._health <= 0:
@@ -19,8 +19,9 @@ class Entity(Observable):
         if not self.isDead():
             print("{} takes {} damage! \t current health: {}".format(self, amount, self._health))
         else:
+            print("{} takes {} damage! \t current health: {}".format(self, amount, self._health))
             print("{} is defeated and transforms back into a human!".format(self))
-            self.update()
+            self.sendUpdate()
             self.remove_all_observers()
 
     def dealDamage(self, target, modifier=1):
