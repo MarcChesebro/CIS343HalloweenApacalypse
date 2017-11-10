@@ -5,5 +5,5 @@ class Observer(object):
     __metaclass__ = ABCMeta
 
     @abstractmethod
-    def update(self, info=None):
+    def receiveUpdate(self, info=None):
         pass
