@@ -1,9 +1,11 @@
 from random import randrange, randint
+from Observers.Observable import Observable
 
-class Weapon:
-    def __init__(self, durability, attackModifierMin, attackModifierMax, name=None):
-        self._attackModifierMin = attackModifierMin
-        self._attackModifierMax = attackModifierMax
+# TODO set attack at constructor
+
+class Weapon(Observable):
+    def __init__(self, durability, attackModifier, name=None):
+        self._attackModifier = attackModifier
         self._durability = durability
         self._name = name
 
@@ -11,7 +13,7 @@ class Weapon:
         return "{} \t Durability: {}".format(self._name, self._durability)
 
     def use(self, amount):
-        modAmount = amount * randrange(self._attackModifierMin, self._attackModifierMax)
+        modAmount = amount * self._attackModifier
 
         self._durability = self._durability - 1
         return modAmount
@@ -20,7 +22,7 @@ class Weapon:
 class HersheyKisses(Weapon):
     """A basic weapon with unlimited uses and no attack modifier."""
     def __init__(self):
-        super(HersheyKisses, self).__init__(1, 1, 1, "Hersey Kisses")
+        super(HersheyKisses, self).__init__(1, 1, "Hersey Kisses")
 
     def use(self, amount):
         modAmount = amount
