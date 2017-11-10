@@ -5,7 +5,7 @@ import Weapons
 
 # TODO have player/House interaction be nicer
 
-class Player(Entity):
+class Player(Entity, Observer):
 
     def __init__(self, name="Marc"):
         self._name = name
@@ -14,6 +14,16 @@ class Player(Entity):
 
     def __str__(self):
         return self._name
+
+    def receiveUpdate(self, info):
+        if info in self._weapons:
+            self._weapons.remove(info)
+
+    def attackAll(self, house, weaponNum):
+        monsters = House.getMonsterlist()
+        damage = self._weapons[weaponNum].use(self._attack)
+        for mon in monsters:
+            mon.takeDamage(damage, self._weapons[weaponNum])
 
     def dealDamage(self, target, weaponNum):
         target.takeDamage(self._weapons[weaponNum].use(self._attack), self._weapons[weaponNum])
