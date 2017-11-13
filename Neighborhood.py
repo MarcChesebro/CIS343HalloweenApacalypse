@@ -13,6 +13,14 @@ class Neighborhood(object):
     def getHouse(self, loc):
         return self._houses[loc[0]][loc[1]]
 
+    def peekHouse(self, loc):
+
+        if self.inBounds(loc):
+
+            return print(self._houses[loc[0]][loc[1]])
+        else:
+            return "invalid location!"
+
     def inBounds(self, loc):
         if loc[0] in range(0, len(self._houses)) and loc[1] in range(0, len(self._houses[0])):
             return True
