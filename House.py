@@ -7,9 +7,10 @@ class House(Observer):
         self._monsters = self.generateMonsters()
 
     def __str__(self):
-        s = "House Contains: \n"
+        s = "\nHouse Contains: \n"
         for mon in self._monsters:
-            s.append("{} \n".format(mon))
+            s = s + "{} \n".format(mon)
+
         return s
 
     def getMonsterlist(self):
