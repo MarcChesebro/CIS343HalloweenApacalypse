@@ -13,6 +13,12 @@ class Game(object):
         self._playerLoc = (0, 0)
         self._neighborhood = Neighborhood()
 
+    def getPlayer(self):
+        return self._player
+
+    def getNeighborhood(self):
+        return self._neighborhood
+
     def getPlayerLoc(self):
         return self._playerLoc
 
