@@ -1,4 +1,5 @@
 from .Entity import Entity
+from Weapons import SourStraws, ChocolateBars, NerdBombs
 from random import randint
 
 # TODO damage resistance
@@ -24,6 +25,15 @@ class Zombie(Entity):
     def __str__(self):
         return "Zombie"
 
+    def takeDamage(self, amount, weapon):
+        if type(weapon) is SourStraws:
+            print("Zombies take Double damage from Sour Straws")
+            damage = amount * 2
+        else:
+            damage = amount
+
+        super(Zombie, self).takeDamage(damage)
+
 class Vampire(Entity):
     """A Vampire Monster that is not harmed by Chocolate bars or SourStraws"""
     def __init__(self):
@@ -31,6 +41,16 @@ class Vampire(Entity):
 
     def __str__(self):
         return "Vampire"
+
+    def takeDamage(self, amount, weapon):
+
+        if type(weapon) is ChocolateBars:
+            print("Vampires take no damage from Chocolate Bars")
+            damage = 0
+        else:
+            damage = amount
+
+        super(Vampire, self).takeDamage(damage)
 
 class Ghoul(Entity):
     """A Ghoul Monster that takes 5X the damage from NerdBombs"""
@@ -40,6 +60,14 @@ class Ghoul(Entity):
     def __str__(self):
         return "Ghoul"
 
+    def takeDamage(self, amount, weapon):
+        if type(weapon) is NerdBombs:
+            damage = amount * 5
+        else:
+            damage = amount
+
+        super(Ghoul, self).takeDamage(damage)
+
 class Werewolf(Entity):
     """A Ghoul Monster that takes 5X the damage from NerdBombs"""
     def __init__(self):
@@ -47,6 +75,15 @@ class Werewolf(Entity):
 
     def __str__(self):
         return "Werewolf"
+
+    def takeDamage(self, amount, weapon):
+        if type(weapon) is ChocolateBars or type(weapon) is SourStraws:
+            print("Werewolves take no damage from Chocolate Bars or Sour Straws")
+            damage = 0
+        else:
+            damage = amount
+
+        super(Werewolf, self).takeDamage(damage)
 
 def generateRandomMonster():
     monsterInt = randint(0, 4)
