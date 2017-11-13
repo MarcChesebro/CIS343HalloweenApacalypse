@@ -1,16 +1,18 @@
 from .Entity import Entity
 from Observers.Observer import Observer
+from Observers.Observable import Observable
 from random import randint
 import Weapons
 
 # TODO have player/House interaction be nicer
 
-class Player(Entity, Observer):
+class Player(Entity, Observer, Observable):
 
     def __init__(self, name="Marc"):
         self._name = name
         self._weapons = Weapons.generateRandomWeaponList(10, self)
         Entity.__init__(self, attack=randint(10, 20))
+        Observable.__init__(self)
 
     def __str__(self):
         return self._name
