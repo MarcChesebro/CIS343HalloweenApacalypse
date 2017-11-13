@@ -22,6 +22,7 @@ class House(Observer):
     def attackAll(self, player, weapon):
         for mon in self._monsters:
             player.dealDamage(mon, weapon)
+            mon.dealDamage(player)
 
     def dealDamage(self, player):
         for mon in self._monsters:
