@@ -16,6 +16,12 @@ class House(Observer):
     def getMonsterlist(self):
         return self._monsters
 
+    def isClear(self):
+        for mon in self._monsters:
+            if not(type(mon) is Monsters.Person):
+                return False
+        return True
+
     def receiveUpdate(self, info):
         if info in self._monsters:
             self._monsters[self._monsters.index(info)] = Monsters.Person()
