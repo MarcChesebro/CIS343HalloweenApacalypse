@@ -2,8 +2,6 @@ from .Entity import Entity
 from Weapons import SourStraws, ChocolateBars, NerdBombs
 from random import randint
 
-# TODO damage resistance
-
 class Person(Entity):
 
     # constructor that calls Entity's constructor with 100 health and -1
