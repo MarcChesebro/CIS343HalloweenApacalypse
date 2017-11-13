@@ -1,4 +1,4 @@
-from random import randrange, randint
+from random import uniform, randint
 from Observers.Observable import Observable
 
 # TODO set attack at constructor
@@ -41,9 +41,22 @@ class HersheyKisses(Weapon):
 
     def use(self, amount):
         modAmount = amount
-
-        self._durability = self._durability - 1
         return modAmount
+
+class SourStraws(Weapon):
+    """Weapon that can be used twice for 1-1.75"""
+    def __init__(self):
+        super(SourStraws, self).__init__(2, uniform(1, 1.75), "Sour Straws")
+
+class ChocolateBars(Weapon):
+    """Weapon that can be used 4 times for 2-2.4"""
+    def __init__(self):
+        super(ChocolateBars, self).__init__(4, uniform(2, 2.4), "Chocolate Bars")
+
+class NerdBombs(Weapon):
+    """Weapon that can be used 1 times for 3.5-5"""
+    def __init__(self):
+        super(NerdBombs, self).__init__(1, uniform(3.5, 5), "Nerd Bombs")
 
 def generateRandomWeaponList(amount, player):
     weapons = []
@@ -53,8 +66,12 @@ def generateRandomWeaponList(amount, player):
     return weapons
 
 def generateRandomWeapon():
-    weaponInt = randint(0, 0)
-    if(weaponInt == 0):
+    weaponInt = randint(0, 3)
+    if weaponInt == 0:
         return HersheyKisses()
-    else:
-        return HersheyKisses()
+    elif weaponInt == 1:
+        return SourStraws()
+    elif weaponInt == 2:
+        return ChocolateBars()
+    elif weaponInt == 3:
+        return NerdBombs()
