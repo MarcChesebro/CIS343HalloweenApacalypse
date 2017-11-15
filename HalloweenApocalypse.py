@@ -3,7 +3,7 @@
 from Game import Game
 
 game = Game()
-commands = ["m", "a", "p"]
+commands = ["m", "a", "p", "q"]
 
 if __name__ == "__main__":
 
@@ -12,14 +12,18 @@ if __name__ == "__main__":
             break
 
         print("location: {}".format(game.getPlayerLoc()))
-        command = input("Enter m, a, or p: m to move, a to attack, and p to peek into the house\n")
+        command = input("Enter m, a, p, or q: m to move, a to attack, p to peek into the house, and q to quit\n")
         if command in commands:
             if command is commands[0]:
                 print("pick move dir: ")
-                x = int(input("x: "))
-                y = int(input("y: "))
-                if not game.move((x, y)):
-                    print("invalid move")
+                try:
+                    x = int(input("x: "))
+                    y = int(input("y: "))
+                except ValueError:
+                    print("not a valid number")
+                else:
+                    if not game.move((x, y)):
+                        print("invalid move")
 
             if command is commands[1]:
                 print("choose weapon: \n")
@@ -29,6 +33,9 @@ if __name__ == "__main__":
 
             if command is commands[2]:
                 game.getNeighborhood().peekHouse(game.getPlayerLoc())
+            if command is commands[3]:
+                print("thanks for playing!")
+                exit()
 
         else:
             print("invalid command")
