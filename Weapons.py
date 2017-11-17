@@ -106,7 +106,8 @@ class NerdBombs(Weapon):
 
 def generateRandomWeaponList(amount, player):
     """
-    generate a random list of Weapons
+    generate a random list of Weapons where the first one is a hersery kiss
+    and the rest is random other weapons
 
     :param amount: amount of weapons to generate
     :param player: player that wants to Observer the weapons
@@ -115,8 +116,9 @@ def generateRandomWeaponList(amount, player):
 
     # initialize empty list
     weapons = []
+    weapons.append(HersheyKisses())
     # generate the weapons and add them to the list
-    for i in range(amount):
+    for i in range(amount - 1):
         weapons.append(generateRandomWeapon())
         # add the player to the weapons observer list
         weapons[len(weapons) - 1].add_observer(player)
@@ -128,12 +130,10 @@ def generateRandomWeapon():
 
     :return: random weapon
     """
-    weaponInt = randint(0, 3)
+    weaponInt = randint(0, 2)
     if weaponInt == 0:
-        return HersheyKisses()
-    elif weaponInt == 1:
         return SourStraws()
-    elif weaponInt == 2:
+    elif weaponInt == 1:
         return ChocolateBars()
-    elif weaponInt == 3:
+    elif weaponInt == 2:
         return NerdBombs()
