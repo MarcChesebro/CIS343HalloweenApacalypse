@@ -48,4 +48,7 @@ if __name__ == "__main__":
 
         else:
             print("invalid command")
-    print("you lost!")
+    if game.getNeighborhood().isClear():
+        print("you won!")
+    else:
+        print("you lost!")
