@@ -29,7 +29,13 @@ if __name__ == "__main__":
                 print("choose weapon: \n")
                 game.getPlayer().printWeapons()
 
-                game.attackHouse(game.getPlayerLoc(), int(input("choose: ")))
+                try:
+                    choice = int(input("choose: "))
+                except ValueError:
+                    print("not a valid number")
+                else:
+                    
+                    game.attackHouse(game.getPlayerLoc(), choice)
 
             if command is commands[2]:
                 game.getNeighborhood().peekHouse(game.getPlayerLoc())
