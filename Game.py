@@ -8,12 +8,12 @@ class Game(Observer):
     functionality to interact with them
     """
 
-    def __init__(self):
+    def __init__(self, playerName="Player"):
         """
         Constructor that initializes instance variables
         """
 
-        self._player = Player()
+        self._player = Player(name=playerName)
         self._player.add_observer(self)
         self._playerLoc = (0, 0)
         self._neighborhood = Neighborhood()
@@ -30,7 +30,7 @@ class Game(Observer):
 
     def getStatus(self):
         """
-        :return: if the game is dtill going
+        :return: if the game is still going
         """
         return self._isPlaying
 
