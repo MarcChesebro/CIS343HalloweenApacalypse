@@ -97,3 +97,6 @@ class Game(Observer):
         self._player.attackAll(self._neighborhood.getHouse(loc), weaponNum)
         # tell the monsters in the house to attack the player back
         self._neighborhood.getHouse(loc).dealDamage(self._player)
+
+        if self.getNeighborhood().isClear():
+            self._isPlaying = False
