@@ -39,6 +39,16 @@ class Neighborhood(object):
         else:
             return "invalid location!"
 
+    def isClear(self):
+        """
+        check if every house in the neighborhood is clear of monsters
+        """
+        for street in self._houses:
+            for house in street:
+                if not house.isClear():
+                    return False
+        return True
+
     def inBounds(self, loc):
         """
         checks if a location is in range of the Houses
