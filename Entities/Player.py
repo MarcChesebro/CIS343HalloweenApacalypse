@@ -49,6 +49,9 @@ class Player(Entity, Observer, Observable):
         :param house: House that contains the monsters to attack
         :param weaponNum: weapon to use
         """
+        if weaponNum < 0 or weaponNum >= len(self._weapons):
+            print("invalid weapon number")
+            return
         monsters = house.getMonsterlist()
         damage = self._weapons[weaponNum].use(self._attack)
         for mon in monsters:
@@ -61,6 +64,9 @@ class Player(Entity, Observer, Observable):
         :param target: Entitiy to attack
         :param weaponNum: weapon to use
         """
+        if weaponNum < 0 or weaponNum >= len(self._weapons):
+            print("invalid weapon number")
+            return
         target.takeDamage(self._weapons[weaponNum].use(self._attack), self._weapons[weaponNum])
 
     def printWeapons(self):
