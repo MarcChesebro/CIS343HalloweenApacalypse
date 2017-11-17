@@ -69,6 +69,18 @@ class Player(Entity, Observer, Observable):
             return
         target.takeDamage(self._weapons[weaponNum].use(self._attack), self._weapons[weaponNum])
 
+    def printDamage(self, amount):
+        """
+        override Entity print damage class to display damage properly
+
+        :param amount: amount to display
+        """
+        if not self.isDead():
+            print("{} takes {} damage! \t current health: {}".format(self, amount, self._health))
+        else:
+            print("{} takes {} damage! \t current health: {}".format(self, amount, self._health))
+            print("{} is defeated and transforms into a {}!".format(self, "Monster"))
+
     def printWeapons(self):
         """
         print the players inventory to the screeen

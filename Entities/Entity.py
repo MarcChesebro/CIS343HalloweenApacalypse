@@ -43,14 +43,27 @@ class Entity(Observable):
         #reduce health
         self._health = self._health - amount
 
+        if self._health < 0:
+            self._health = 0
+
+        self.printDamage(amount)
+
         #if the entity is dead update observers
+        if self.isDead():
+            self.sendUpdate()
+            self.remove_all_observers()
+
+    def printDamage(self, amount):
+        """
+        prints the damage to the console in a nice away
+
+        :param amount: amount of damage to print to the screen
+        """
         if not self.isDead():
             print("{} takes {} damage! \t current health: {}".format(self, amount, self._health))
         else:
             print("{} takes {} damage! \t current health: {}".format(self, amount, self._health))
             print("{} is defeated and transforms back into a human!".format(self))
-            self.sendUpdate()
-            self.remove_all_observers()
 
     def dealDamage(self, target, modifier=1):
         """
