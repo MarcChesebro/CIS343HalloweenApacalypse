@@ -14,6 +14,7 @@ class Entity(Observable):
         """
         #set instance varables
         self._health = health
+        self._maxHealth = health
         self._attack = attack
         # call Observavle constructor
         super(Entity, self).__init__()
@@ -45,6 +46,8 @@ class Entity(Observable):
 
         if self._health < 0:
             self._health = 0
+        if self._health > self._maxHealth:
+            self._health = self._maxHealth
 
         self.printDamage(amount)
 
