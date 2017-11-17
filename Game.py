@@ -11,6 +11,8 @@ class Game(Observer):
     def __init__(self, playerName="Player"):
         """
         Constructor that initializes instance variables
+
+        :param PlayerName: name of the player
         """
 
         self._player = Player(name=playerName)
