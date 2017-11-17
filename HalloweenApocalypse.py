@@ -2,10 +2,13 @@
 
 from Game import Game
 
-game = Game()
-commands = ["m", "a", "p", "q"]
-
 if __name__ == "__main__":
+
+    commands = ["m", "a", "p", "q"]
+
+    print("Everyone in The neighborhood has been turned into monsters due to tainted candy. clear all the houses of the monsters to win")
+    name = input("whats your Name: ")
+    game = Game(playerName=name)
 
     while True:
         if not game.getStatus():
@@ -34,7 +37,7 @@ if __name__ == "__main__":
                 except ValueError:
                     print("not a valid number")
                 else:
-                    
+
                     game.attackHouse(game.getPlayerLoc(), choice)
 
             if command is commands[2]:
