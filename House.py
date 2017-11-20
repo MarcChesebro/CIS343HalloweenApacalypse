@@ -11,6 +11,8 @@ class House(Observer):
         returns a string to represent the object
         """
         s = "\nHouse Contains: \n"
+        if len(self._monsters) == 0:
+            s = s + "Empty\n"
         for mon in self._monsters:
             s = s + "{} \n".format(mon)
 
