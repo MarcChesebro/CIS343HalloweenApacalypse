@@ -15,7 +15,7 @@ class Person(Entity):
         constructor that calls super with strength as -1 to heal instead
         of deal damage and 100 health
         """
-        super(Person, self).__init__(100, -1)
+        super(Person, self).__init__(100, -5)
 
     def __str__(self):
         """
@@ -125,7 +125,7 @@ class Werewolf(Entity):
         """
         constructor that calls super constructor with default values
         """
-        super(Werewolf, self).__init__(health=200, attack=randint(0, 40))
+        super(Werewolf, self).__init__(health=200, attack=randint(5, 30))
 
     def __str__(self):
         """
