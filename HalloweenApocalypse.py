@@ -14,8 +14,13 @@ if __name__ == "__main__":
         if not game.getStatus():
             break
 
-        print("location: {}".format(game.getPlayerLoc()))
-        command = input("Enter m, a, p, or q: m to move, a to attack, p to peek into the house, and q to quit\n")
+        print("Current location: {}".format(game.getPlayerLoc()))
+        print("Commands:")
+        print("m: Move")
+        print("a: Attack")
+        print("p: Peek into house")
+        print("q: Quit")
+        command = input("")
         if command in commands:
             if command is commands[0]:
                 print("pick move dir: ")
